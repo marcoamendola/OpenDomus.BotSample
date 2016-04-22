@@ -29,10 +29,8 @@ namespace OpenDomus.BotSample.Console
 
             while (true)
             {
-                message = Conversation
-                    .SendAsync(message, rootDialogFactory)
-                    .Result;
-
+                var task = Conversation.SendAsync(message, rootDialogFactory);                    
+                message = task.GetAwaiter().GetResult();
                 if (message.Text == null) return;
 
                 displayBotMessage(message);
