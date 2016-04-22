@@ -45,5 +45,14 @@ namespace OpenDomus.BotSample.Core.Dialogs
 
             context.Wait(MessageReceived);
         }
+
+        [LuisIntent("CallOperator")]
+        public async Task CallOperator(IDialogContext context, LuisResult result)
+        {
+            string message = "OK, ti metto in contatto con qualcuno più umano di me.";
+            await context.PostAsync(message);
+
+            context.Wait(MessageReceived);
+        }
     }
 }
