@@ -28,7 +28,22 @@ namespace OpenDomus.BotSample.Core.Dialogs
             context.Wait(MessageReceived);
         }
 
+        [LuisIntent("SayTime")]
+        public async Task SayTime(IDialogContext context, LuisResult result)
+        {
+            string message = $"Sono le {DateTime.Now.ToString("HH:mm")}";
+            await context.PostAsync(message);
 
-        
+            context.Wait(MessageReceived);
+        }
+
+        [LuisIntent("SayDate")]
+        public async Task SayDate(IDialogContext context, LuisResult result)
+        {
+            string message = $"Oggi è {DateTime.Today.ToLongDateString()}";
+            await context.PostAsync(message);
+
+            context.Wait(MessageReceived);
+        }
     }
 }
