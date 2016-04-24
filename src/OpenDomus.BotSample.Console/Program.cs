@@ -20,8 +20,8 @@ namespace OpenDomus.BotSample.Console
                 System.Console.ReadLine
             );
 
-            runner.Run(() => new EchoDialog());
-            //runner.Run(() => new CustomerServiceDialog());   
+            //runner.Run(() => new EchoDialog());
+            runner.Run(() => new CustomerServiceDialog());   
         }
     }
 }
