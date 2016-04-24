@@ -18,19 +18,49 @@ namespace OpenDomus.BotSample.Core.Dialogs
 
         }
 
-
+        int countNone = 0;
         [LuisIntent("")]
         public async Task None(IDialogContext context, LuisResult result)
         {
+            countNone++;
+            if (countNone > 2)
+            {
+                CustomPromptDialog.Confirm(context, AfterDialog,
+                    "Vuoi che ti passi un operatore più sveglio di me?",
+                    "Non ho capito, vuoi parlare con un operatore?", 1, true);
+                return;
+            }
+
+
             string message = "Scusa, non ho capito.";
             await context.PostAsync(message);
 
             context.Wait(MessageReceived);
         }
+        
+        async Task AfterDialog(IDialogContext context, IAwaitable<bool> argument)
+        {
+            var result = await argument;
+                         
+            if (result)
+            {
+                await CallOperator(context, null);
+            }
+            else
+            {
+                countNone = 0;
+                string message = "OK.";
+                await context.PostAsync(message);
+
+                context.Wait(MessageReceived);
+            }
+        }
+
 
         [LuisIntent("SayTime")]
         public async Task SayTime(IDialogContext context, LuisResult result)
         {
+            countNone = 0;
             string message = $"Sono le {DateTime.Now.ToString("HH:mm")}";
             await context.PostAsync(message);
 
@@ -40,6 +70,7 @@ namespace OpenDomus.BotSample.Core.Dialogs
         [LuisIntent("SayDate")]
         public async Task SayDate(IDialogContext context, LuisResult result)
         {
+            countNone = 0;
             string message = $"Oggi è {DateTime.Today.ToLongDateString()}";
             await context.PostAsync(message);
 
@@ -49,7 +80,25 @@ namespace OpenDomus.BotSample.Core.Dialogs
         [LuisIntent("CallOperator")]
         public async Task CallOperator(IDialogContext context, LuisResult result)
         {
+            countNone = 0;
             string message = "OK, ti metto in contatto con qualcuno più umano di me.";
+            await context.PostAsync(message);
+
+            context.Wait(MessageReceived);
+        }
+
+
+        [LuisIntent("AskInfoAboutPlan")]
+        public async Task AskInfoAboutPlan(IDialogContext context, LuisResult result)
+        {
+            countNone = 0;
+            var planName = string.Join(" ",
+                result.Entities
+                .Where(e => e.Type == "PlanName")
+                .Select(e => e.Entity)
+                );
+
+            string message = $"Questi sono i dettagli del piano '{planName}'";
             await context.PostAsync(message);
 
             context.Wait(MessageReceived);
