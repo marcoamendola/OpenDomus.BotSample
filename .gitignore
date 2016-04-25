@@ -279,3 +279,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/src/OpenDomus.BotSample.App/Web.Azure.config
