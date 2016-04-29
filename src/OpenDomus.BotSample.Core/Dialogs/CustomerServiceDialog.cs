@@ -68,18 +68,23 @@ namespace OpenDomus.BotSample.Core.Dialogs
         [LuisIntent("")]
         public async Task None(IDialogContext context, LuisResult result)
         {
+            #region Improvement
+
             countNone++;
             if (countNone > 2)
             {
-                CustomPromptDialog.Confirm(context, AfterDialog,
+                var child = new PromptConfirmWithDefault(
                     "Vuoi che ti passi un operatore più sveglio di me?",
                     "Non ho capito, vuoi parlare con un operatore?",
-                    attempts: 2, 
-                    defaultResult: true);
+                    attempts: 2,
+                    defaultResult: true
+                    );
 
+                context.Call(child, AfterDialog);
                 return;
             }
 
+            #endregion
 
             string message = "Scusa, non ho capito.";
             await context.PostAsync(message);

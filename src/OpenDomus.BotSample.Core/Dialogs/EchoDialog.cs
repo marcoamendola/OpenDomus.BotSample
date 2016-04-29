@@ -20,8 +20,11 @@ namespace OpenDomus.BotSample.Core.Dialogs
         
         async Task MessageReceivedAsync(IDialogContext context, IAwaitable<Message> argument)
         {
+            //waits for message
             var message = await argument;
-            
+
+
+            //build reply
             var reply = string.Empty;
             if (!string.IsNullOrWhiteSpace(message.Text))
             {
@@ -30,8 +33,11 @@ namespace OpenDomus.BotSample.Core.Dialogs
                 else
                     reply = "Hai appena detto: " + message.Text;
             }
-
+            //send reply
             await context.PostAsync(reply);
+
+
+            //set continuation
             context.Wait(MessageReceivedAsync);
         }
 

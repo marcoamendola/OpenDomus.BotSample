@@ -9,7 +9,7 @@ using static Microsoft.Bot.Builder.Dialogs.PromptDialog;
 
 namespace OpenDomus.BotSample.Core.Dialogs
 {
-
+    
     /// <summary>   Prompt for a confirmation with a default. </summary>
     /// <remarks>   Normally used through <see cref="PromptDialog.Confirm(IDialogContext, ResumeAfter{bool}, string, string, int)"/>.</remarks>
     [Serializable]
