@@ -12,50 +12,7 @@ namespace OpenDomus.BotSample.Core.Dialogs
     [Serializable]
     public class CustomerServiceDialog : LuisDialog<object>
     {
-
-        public CustomerServiceDialog()
-        {
-
-        }
-
-        int countNone = 0;
-        [LuisIntent("")]
-        public async Task None(IDialogContext context, LuisResult result)
-        {
-            countNone++;
-            if (countNone > 2)
-            {
-                CustomPromptDialog.Confirm(context, AfterDialog,
-                    "Vuoi che ti passi un operatore più sveglio di me?",
-                    "Non ho capito, vuoi parlare con un operatore?", 1, true);
-                return;
-            }
-
-
-            string message = "Scusa, non ho capito.";
-            await context.PostAsync(message);
-
-            context.Wait(MessageReceived);
-        }
         
-        async Task AfterDialog(IDialogContext context, IAwaitable<bool> argument)
-        {
-            var result = await argument;
-                         
-            if (result)
-            {
-                await CallOperator(context, null);
-            }
-            else
-            {
-                countNone = 0;
-                string message = "OK.";
-                await context.PostAsync(message);
-
-                context.Wait(MessageReceived);
-            }
-        }
-
 
         [LuisIntent("SayTime")]
         public async Task SayTime(IDialogContext context, LuisResult result)
@@ -102,6 +59,52 @@ namespace OpenDomus.BotSample.Core.Dialogs
             await context.PostAsync(message);
 
             context.Wait(MessageReceived);
+        }
+
+
+
+
+        int countNone = 0;
+        [LuisIntent("")]
+        public async Task None(IDialogContext context, LuisResult result)
+        {
+            countNone++;
+            if (countNone > 2)
+            {
+                CustomPromptDialog.Confirm(context, AfterDialog,
+                    "Vuoi che ti passi un operatore più sveglio di me?",
+                    "Non ho capito, vuoi parlare con un operatore?",
+                    attempts: 2, 
+                    defaultResult: true);
+
+                return;
+            }
+
+
+            string message = "Scusa, non ho capito.";
+            await context.PostAsync(message);
+
+            context.Wait(MessageReceived);
+        }
+
+
+
+        async Task AfterDialog(IDialogContext context, IAwaitable<bool> argument)
+        {
+            var result = await argument;
+
+            if (result)
+            {
+                await CallOperator(context, null);
+            }
+            else
+            {
+                countNone = 0;
+                string message = "OK.";
+                await context.PostAsync(message);
+
+                context.Wait(MessageReceived);
+            }
         }
     }
 }

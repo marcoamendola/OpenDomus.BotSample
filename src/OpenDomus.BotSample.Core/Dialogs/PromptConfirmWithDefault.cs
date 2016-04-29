@@ -50,7 +50,7 @@ namespace OpenDomus.BotSample.Core.Dialogs
                 }
             }
 
-            if (!found && defaultResult.HasValue) {
+            if (!found && attempts<=1 && defaultResult.HasValue) {
                 found = true;
                 result = defaultResult.Value;
             }

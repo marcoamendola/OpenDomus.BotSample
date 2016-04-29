@@ -1,0 +1,325 @@
+{
+  "luis_schema_version": "1.2.0",
+  "name": "OpenDomus.BotSample",
+  "desc": "OpenDomus Bot Sample",
+  "culture": "it-it",
+  "intents": [
+    {
+      "Name": "CallOperator",
+      "Children": []
+    },
+    {
+      "Name": "SayDate",
+      "Children": []
+    },
+    {
+      "Name": "AskInfoAboutPlan",
+      "Children": []
+    },
+    {
+      "Name": "None",
+      "Children": []
+    },
+    {
+      "Name": "SayTime",
+      "Children": []
+    }
+  ],
+  "entities": [
+    {
+      "Name": "PlanName",
+      "Children": []
+    }
+  ],
+  "bing_entities": [],
+  "actions": [
+    {
+      "actionName": "AskInfoAboutPlan",
+      "intentName": "AskInfoAboutPlan",
+      "actionParameters": [
+        {
+          "parameterName": "PlanName",
+          "entityName": "PlanName",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "model_features": [
+    {
+      "name": "PlanNames",
+      "mode": true,
+      "words": "Zero Scatti NEW,Zero Scatti,Secondi Ricaricabile,Tutto Compreso Base,Secondi Abbonati,Tim 12,Tim 9,Opzione Full Maxi",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "come ti chiami?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "dimmi l'ora per favore",
+      "intent": "SayTime",
+      "entities": []
+    },
+    {
+      "text": "ciao",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "puoi dirmi l'orario?",
+      "intent": "SayTime",
+      "entities": []
+    },
+    {
+      "text": "una frase a caso",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "che ora è?",
+      "intent": "SayTime",
+      "entities": []
+    },
+    {
+      "text": "che ore sono?",
+      "intent": "SayTime",
+      "entities": []
+    },
+    {
+      "text": "mi dici l'ora?",
+      "intent": "SayTime",
+      "entities": []
+    },
+    {
+      "text": "ee",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "ff",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "dimmi l'ora",
+      "intent": "SayTime",
+      "entities": []
+    },
+    {
+      "text": "dimmi che ore sono",
+      "intent": "SayTime",
+      "entities": []
+    },
+    {
+      "text": "che giorno è?",
+      "intent": "SayDate",
+      "entities": []
+    },
+    {
+      "text": "dimmi la data",
+      "intent": "SayDate",
+      "entities": []
+    },
+    {
+      "text": "oggi è il?",
+      "intent": "SayDate",
+      "entities": []
+    },
+    {
+      "text": "puoi passarmi un operatore?",
+      "intent": "CallOperator",
+      "entities": []
+    },
+    {
+      "text": "ma la data invece?",
+      "intent": "SayDate",
+      "entities": []
+    },
+    {
+      "text": "ciao, mi dici l'ora?",
+      "intent": "SayTime",
+      "entities": []
+    },
+    {
+      "text": "ok ma che giorno %u00e8?",
+      "intent": "SayDate",
+      "entities": []
+    },
+    {
+      "text": "torna a dirmi l'orario",
+      "intent": "SayTime",
+      "entities": []
+    },
+    {
+      "text": "ma non capisci niente",
+      "intent": "CallOperator",
+      "entities": []
+    },
+    {
+      "text": "ciao voglio parlare con un operatore",
+      "intent": "CallOperator",
+      "entities": []
+    },
+    {
+      "text": "passami un operatore",
+      "intent": "CallOperator",
+      "entities": []
+    },
+    {
+      "text": "ma non c'%u00e8 una persona?",
+      "intent": "CallOperator",
+      "entities": []
+    },
+    {
+      "text": "potresti dirmi l'ora?",
+      "intent": "SayTime",
+      "entities": []
+    },
+    {
+      "text": "che giorno %u00e8 oggi?",
+      "intent": "SayDate",
+      "entities": []
+    },
+    {
+      "text": "mi passi una persona?",
+      "intent": "CallOperator",
+      "entities": []
+    },
+    {
+      "text": "non capisci nulla",
+      "intent": "CallOperator",
+      "entities": []
+    },
+    {
+      "text": "chiama un tuo collega",
+      "intent": "CallOperator",
+      "entities": []
+    },
+    {
+      "text": "che altro capisci?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "dai, oggi %u00e8 il?",
+      "intent": "SayDate",
+      "entities": []
+    },
+    {
+      "text": "puoi passarmi un'altra persona",
+      "intent": "CallOperator",
+      "entities": []
+    },
+    {
+      "text": "dammi informazioni sul piano tutto compreso base",
+      "intent": "AskInfoAboutPlan",
+      "entities": [
+        {
+          "entity": "PlanName",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "PlanName",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "PlanName",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "mi dai qualche info sul piano tim 9?",
+      "intent": "AskInfoAboutPlan",
+      "entities": [
+        {
+          "entity": "PlanName",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "PlanName",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "che mi dici del piano secondi ricarica",
+      "intent": "AskInfoAboutPlan",
+      "entities": [
+        {
+          "entity": "PlanName",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "PlanName",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "passami uno pi%u00f9 intelligente",
+      "intent": "CallOperator",
+      "entities": []
+    },
+    {
+      "text": "parlami del piano zero scatti",
+      "intent": "AskInfoAboutPlan",
+      "entities": [
+        {
+          "entity": "PlanName",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "PlanName",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "illustrami zero scatti",
+      "intent": "AskInfoAboutPlan",
+      "entities": [
+        {
+          "entity": "PlanName",
+          "startPos": 1,
+          "endPos": 1
+        },
+        {
+          "entity": "PlanName",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "illustrami lo zero scatti",
+      "intent": "AskInfoAboutPlan",
+      "entities": [
+        {
+          "entity": "PlanName",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "PlanName",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    }
+  ]
+}
